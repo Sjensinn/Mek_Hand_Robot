@@ -27,6 +27,7 @@ void main(void) {
     //sensor_init();                //Initialize the TCS3200 sensor
     
     while(1){                       //Embedded systems never stop having fun!
+        //I like to git it git it
         LED_TOGGLE();               //And we have rave lights
         __delay_ms(1000); 
     }
