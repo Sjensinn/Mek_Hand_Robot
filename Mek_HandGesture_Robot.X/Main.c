@@ -2,7 +2,9 @@
  * File:   Main.c
  * Author: Sjensi
  *
- * Created on February 6, 2022, 9:50 PM
+ * Downloaded via GitBash, Edited via MpLab
+ * 
+ *  * Created on February 6, 2022, 9:50 PM
  */
 
 #ifndef _XTAL_FREQ
