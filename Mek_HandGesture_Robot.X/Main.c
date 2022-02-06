@@ -22,7 +22,7 @@ void putch(uint8_t txData);
 
 void main(void) {
     system_init();                  //Initiate clock, pins, uart, i2c, timer1 and interrupts
-    PCA_Init(130, 0x80);          //Initiate PCA9685 module with 130 prescalar and address = 0x80
+    //PCA_Init(130, 0x80);          //Initiate PCA9685 module with 130 prescalar and address = 0x80
     //LCD_init(0x4E);               // Initialize LCD module with I2C address = 0x4E
     //sensor_init();                //Initialize the TCS3200 sensor
     
