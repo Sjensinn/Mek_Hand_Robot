@@ -12,7 +12,9 @@ void I2C_init(void){
     /* DHEN disabled; AHEN disabled; SBCDE disabled; SDAHT 100ns; BOEN disabled; SCIE disabled; PCIE disabled;  */
     SSP1CON3 = 0x0;
     /* SSPADD 39;  for 100kHz*/
-    SSP1ADD = 0x27;
+    //SSP1ADD = 0x27;
+    /* SSPADD 159 for 400kHz*/
+    SSP1ADD = 159;
     
     TRISCbits.TRISC3 = 1;  //RC3 (SCL) as input
     TRISCbits.TRISC4 = 1;  //RC4 (SDA) as input
@@ -58,10 +60,19 @@ void I2C_Write(uint8_t data){
 }
 
 //  Takes in an integer, 0 or 1, which is what the Acknowledge Data bit (ACKDT) is set to. Set to 0 to acknowledge (when reading first 2 bytes) and 1 when reading last byte. Also, sends restart condition, and sets Acknowledge Sequence Enable bit (ACKEN) to 1 to initiate acknowledge sequence on SDA and SCL and send ACKDT bit. The hardware automatically clears this bit.
-void I2C_Read(uint8_t* readbuffer, uint8_t place, uint8_t a){
-  I2C_RepeatedStart();
-  readbuffer[place] = SSP1BUF;      //Read data from SSPBUF
-  I2C_Wait();
-  SSP1CON2bits.ACKDT = (a); //0:1;    //Acknowledge bit 
-
+ uint8_t I2C_Read(uint8_t ackbit){
+    uint8_t tempreadbuffer;      //Temporary variable for reading from buffer
+    
+    SSP1CON2bits.RCEN = 1;          //Set Recieve Enable
+    I2C_Wait();                     //Wait for ack
+    
+    tempreadbuffer = SSP1BUF;       //Read data from SSPBUF
+    SSP1STATbits.BF = 0;            //clearing the BF (Buffer full flag)
+    
+    SSP1CON2bits.ACKDT = (ackbit);
+    SSP1CON2bits.ACKEN = 1;
+    I2C_Wait();
+    
+    return tempreadbuffer;                         
 }
+

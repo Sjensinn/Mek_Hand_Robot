@@ -13,10 +13,10 @@ extern "C" {
 #endif
 
 #include "config_bits.h"
-#include "tcs3200.h"
 #include "I2C_MSSP1_driver.h"
 #include "PCA9685_driver.h"
-#include "timer1.h"
+#include "uart.h"
+//#include "timer1.h"
 
     
 //Pin macros
@@ -27,7 +27,6 @@ extern "C" {
     void system_init(void);
     void clock_init(void);
     void pin_init(void);
-    void uart_init(void);
     void int_init(void);
     
     

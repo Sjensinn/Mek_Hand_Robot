@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <executable name="dist/default/debug\Mek_HandGesture_Robot.X.debug.hex">
+    <memory name="program">
+      <units>words</units>
+      <length>32768</length>
+      <used>7464</used>
+      <free>25304</free>
+    </memory>
+    <memory name="data">
+      <units>bytes</units>
+      <length>4096</length>
+      <used>394</used>
+      <free>3702</free>
+    </memory>
+  </executable>
+</project>

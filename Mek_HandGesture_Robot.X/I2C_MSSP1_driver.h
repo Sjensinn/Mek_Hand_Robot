@@ -31,14 +31,15 @@ extern "C" {
     
 #include <xc.h>
     
+    //uint8_t r_w_bit = 0;
+    
 void I2C_init(void);
 void I2C_Start(void);
 void I2C_Wait(void);
 void I2C_Write(uint8_t data);
 void I2C_RepeatedStart();
 void I2C_Stop(void);
-
-void I2C_Read(uint8_t* readbuffer, uint8_t place, uint8_t a);
+uint8_t I2C_Read(uint8_t ackbit);
 
 
 #ifdef	__cplusplus

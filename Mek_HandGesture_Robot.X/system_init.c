@@ -12,7 +12,7 @@ void system_init(){
     pin_init();
     uart_init();
     I2C_init();
-    Timer1_Initialize();
+    //Timer1_Initialize();
     int_init();
 }
 
@@ -131,31 +131,7 @@ void pin_init(){
     IOCEF = 0x0;
 }
 
-void uart_init(void){
-        // Set the EUSART module to the options selected in the user interface.
-
-    // ABDEN disabled; WUE disabled; BRG16 16bit_generator; SCKP Non-Inverted; ABDOVF no_overflow; 
-    BAUD1CON = 0x48;
-
-    // ADDEN disabled; CREN enabled; SREN disabled; RX9 8-bit; SPEN enabled; 
-    RC1STA = 0x90;
-
-    // TX9D 0x0; BRGH hi_speed; SENDB sync_break_complete; SYNC asynchronous; TXEN enabled; TX9 8-bit; CSRC client; 
-    TX1STA = 0x26;
-
-    // SPBRGL 159; 
-    SP1BRGL = 0x9F;
-
-    // SPBRGH 1; 
-    SP1BRGH = 0x1;
-    
-    ANSELCbits.ANSC3 = 0;   //Set to digital
-    ANSELCbits.ANSC4 = 0;   //Set to digital
-    TRISCbits.TRISC3 = 1;   //Set as input
-    TRISCbits.TRISC4 = 1;   //Set as input
-}
-
 void int_init(void){
-        INTCONbits.GIE = 1;         //Enable Global interrupts
+    INTCONbits.GIE = 1;         //Enable Global interrupts
     INTCONbits.PEIE = 1;        //Enable Pheripheral Interrupts
 }

@@ -7,6 +7,19 @@
  *      *Calculated prescalar for given frequency to get 50Hz output is 130
  *      *PCA9685 address: 0x80
  *      *I2c Frequency should be 100kHz
+ * 
+ * 
+ *  Example - inside main
+ *      PCA_Init(130, 0x80); //first initiate
+ * 
+ *      //To find min max values
+ *      LATBbits.LATB2 = 0;             //Min range
+        PCA_write(0, 4000, 95);         //4095 is max resolution, On for 4000/4095, off for 95/4095
+        __delay_ms(5000);
+
+        LATBbits.LATB2 = 1;             //Max range
+        PCA_write(0, 3595, 500);        //4095 is max resolution, On for 500/4095, Off for 3595/4095
+        __delay_ms(5000);
  *      
  * Created on February 3, 2022, 8:27 AM
  */
