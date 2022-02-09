@@ -1,0 +1,5 @@
+{
+    "files.associations": {
+        "i2c_mssp1_driver.h": "c"
+    }
+}

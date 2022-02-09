@@ -60,8 +60,8 @@ void I2C_Write(uint8_t data){
 }
 
 //  Takes in an integer, 0 or 1, which is what the Acknowledge Data bit (ACKDT) is set to. Set to 0 to acknowledge (when reading first 2 bytes) and 1 when reading last byte. Also, sends restart condition, and sets Acknowledge Sequence Enable bit (ACKEN) to 1 to initiate acknowledge sequence on SDA and SCL and send ACKDT bit. The hardware automatically clears this bit.
- uint8_t I2C_Read(uint8_t ackbit){
-    uint8_t tempreadbuffer;      //Temporary variable for reading from buffer
+ int8_t I2C_Read(int8_t ackbit){
+    int8_t tempreadbuffer;      //Temporary variable for reading from buffer
     
     SSP1CON2bits.RCEN = 1;          //Set Recieve Enable
     I2C_Wait();                     //Wait for ack

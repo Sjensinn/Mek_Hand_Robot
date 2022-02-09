@@ -1,4 +1,4 @@
-# 1 "LCD.c"
+# 1 "uart.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,16 +6,8 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "LCD.c" 2
+# 1 "uart.c" 2
 
-
-
-
-
-
-
-# 1 "./LCD.h" 1
-# 15 "./LCD.h"
 # 1 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -20725,141 +20717,56 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 29 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\\pic\\include\\xc.h" 2 3
-# 15 "./LCD.h" 2
+# 2 "uart.c" 2
 
-# 1 "./I2C_MSSP1_driver.h" 1
-# 36 "./I2C_MSSP1_driver.h"
-void I2C_init(void);
-void I2C_Start(void);
-void I2C_Wait(void);
-void I2C_Write(uint8_t data);
-void I2C_RepeatedStart();
-void I2C_Stop(void);
-uint8_t I2C_Read(uint8_t ackbit);
-# 16 "./LCD.h" 2
-# 38 "./LCD.h"
-uint8_t lcd_address, RS;
-uint8_t BackLight_State = 0x08;
-
-void LCD_init(uint8_t lcd_addr);
-
-void IO_Expander(unsigned char data);
-
-void LCD_Write_4Bit(unsigned char Nibble);
-
-void LCD_CMD(unsigned char CMD);
-
-void LCD_write_char(char data);
-
-void LCD_write_string(char* str);
-
-void LCD_Set_Cursor(unsigned char ROW, unsigned char COL);
-
-void Backlight();
-
-void noBacklight();
-
-void LCD_SL();
-
-void LCD_SR();
-
-void LCD_Clear();
-# 8 "LCD.c" 2
+# 1 "./uart.h" 1
+# 26 "./uart.h"
+void uart_init(void);
 
 
-void LCD_init(uint8_t lcd_addr){
-    lcd_address = lcd_addr;
-    IO_Expander(0x00);
-    _delay((unsigned long)((30)*(16000000/4000.0)));
-    LCD_CMD(0x03);
-    _delay((unsigned long)((5)*(16000000/4000.0)));
-    LCD_CMD(0x03);
-    _delay((unsigned long)((5)*(16000000/4000.0)));
-    LCD_CMD(0x03);
-    _delay((unsigned long)((5)*(16000000/4000.0)));
-    LCD_CMD(0x02);
-    _delay((unsigned long)((5)*(16000000/4000.0)));
-    LCD_CMD(0x20 | (2 << 2));
-    _delay((unsigned long)((50)*(16000000/4000.0)));
-    LCD_CMD(0x0C);
-    _delay((unsigned long)((50)*(16000000/4000.0)));
-    LCD_CMD(0x01);
-    _delay((unsigned long)((50)*(16000000/4000.0)));
-    LCD_CMD(0x04 | 0x02);
-    _delay((unsigned long)((50)*(16000000/4000.0)));
+
+
+
+
+void uart_Write(unsigned char data);
+
+
+
+
+
+
+void uart_Write_String(char* buf);
+# 3 "uart.c" 2
+
+
+void uart_init(void){
+
+
+
+    BAUD1CON = 0x48;
+
+
+    RC1STA = 0x90;
+
+
+    TX1STA = 0x26;
+
+
+    SP1BRGL = 0x9F;
+
+
+    SP1BRGH = 0x1;
 }
 
-void IO_Expander(unsigned char data){
-    I2C_Start();
-    I2C_Write(lcd_address);
-    I2C_Write(data | BackLight_State);
-    I2C_Stop();
+void uart_Write(unsigned char data){
+    while(0 == PIR3bits.TXIF){
+        continue;
+    }
+    TX1REG = data;
 }
-
-void LCD_Write_4Bit(unsigned char Nibble){
-
-  Nibble |= RS;
-  IO_Expander(Nibble | 0x04);
-  IO_Expander(Nibble & 0xFB);
-  _delay((unsigned long)((50)*(16000000/4000000.0)));
-}
-
-void LCD_CMD(unsigned char CMD){
-  RS = 0;
-  LCD_Write_4Bit(CMD & 0xF0);
-  LCD_Write_4Bit((CMD << 4) & 0xF0);
-}
-
-void LCD_write_char(char data){
-  RS = 1;
-  LCD_Write_4Bit(data & 0xF0);
-  LCD_Write_4Bit((data << 4) & 0xF0);
-}
-
-void LCD_write_string(char* str){
-    for(int i=0; str[i]!='\0'; i++)
-    LCD_write_char(str[i]);
-}
-
-void LCD_Set_Cursor(unsigned char ROW, unsigned char COL){
-  switch(ROW)
-  {
-    case 2:
-      LCD_CMD(0xC0 + COL-1);
-      break;
-    case 3:
-      LCD_CMD(0x94 + COL-1);
-      break;
-    case 4:
-      LCD_CMD(0xD4 + COL-1);
-      break;
-
-    default:
-      LCD_CMD(0x80 + COL-1);
-  }
-}
-
-void Backlight(){
-  BackLight_State = 0x08;
-  IO_Expander(0);
-}
-
-void noBacklight(){
-  BackLight_State = 0x00;
-  IO_Expander(0);
-}
-
-void LCD_SL(){
-  LCD_CMD(0x18);
-  _delay((unsigned long)((40)*(16000000/4000000.0)));
-}
-
-void LCD_SR(){
-  LCD_CMD(0x1C);
-  _delay((unsigned long)((40)*(16000000/4000000.0)));
-}
-
-void LCD_Clear(){
-  LCD_CMD(0x01);
-  _delay((unsigned long)((40)*(16000000/4000000.0)));
+void uart_Write_String(char* buf){
+    int i=0;
+    while(buf[i] != '\0'){
+        uart_Write(buf[i++]);
+    }
 }

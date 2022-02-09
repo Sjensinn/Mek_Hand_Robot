@@ -51,8 +51,37 @@
 #pragma config CPD = OFF
 # 15 "./system_init.h" 2
 
+# 1 "./uart.h" 1
+# 26 "./uart.h"
+void uart_init(void);
+
+
+
+
+
+
+void uart_Write(unsigned char data);
+
+
+
+
+
+
+void uart_Write_String(char* buf);
+# 16 "./system_init.h" 2
+# 32 "./system_init.h"
+void system_init(void);
+# 43 "./system_init.h"
+void clock_init(void);
+# 54 "./system_init.h"
+void pin_init(void);
+# 63 "./system_init.h"
+void int_init(void);
+# 8 "system_init.c" 2
+
+
 # 1 "./I2C_MSSP1_driver.h" 1
-# 32 "./I2C_MSSP1_driver.h"
+# 20 "./I2C_MSSP1_driver.h"
 # 1 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -20762,38 +20791,32 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 29 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\\pic\\include\\xc.h" 2 3
-# 32 "./I2C_MSSP1_driver.h" 2
-
-
-
-
+# 20 "./I2C_MSSP1_driver.h" 2
+# 40 "./I2C_MSSP1_driver.h"
 void I2C_init(void);
+# 61 "./I2C_MSSP1_driver.h"
 void I2C_Start(void);
+# 70 "./I2C_MSSP1_driver.h"
 void I2C_Wait(void);
+# 91 "./I2C_MSSP1_driver.h"
 void I2C_Write(uint8_t data);
+
+
+
+
+
+
 void I2C_RepeatedStart();
+
+
+
+
+
+
 void I2C_Stop(void);
-uint8_t I2C_Read(uint8_t ackbit);
-# 16 "./system_init.h" 2
-
-# 1 "./PCA9685_driver.h" 1
-# 46 "./PCA9685_driver.h"
-    uint8_t pca_address;
-
-
-
-void PCA_Init(uint8_t prescalar, uint8_t pca_addr);
-
-
-void PCA_write(uint8_t ChannelN, uint16_t on, uint16_t off);
-# 17 "./system_init.h" 2
-# 26 "./system_init.h"
-    void system_init(void);
-    void clock_init(void);
-    void pin_init(void);
-    void uart_init(void);
-    void int_init(void);
-# 8 "system_init.c" 2
+# 139 "./I2C_MSSP1_driver.h"
+int8_t I2C_Read(int8_t ackbit);
+# 10 "system_init.c" 2
 
 
 void system_init(){
@@ -20801,7 +20824,6 @@ void system_init(){
     pin_init();
     uart_init();
     I2C_init();
-
     int_init();
 }
 
@@ -20859,7 +20881,7 @@ void pin_init(){
     WPUC = 0x0;
     WPUD = 0x0;
     WPUE = 0x0;
-# 83 "system_init.c"
+# 84 "system_init.c"
     ODCONA = 0x0;
     ODCONB = 0x0;
     ODCONC = 0x0;
@@ -20911,31 +20933,7 @@ void pin_init(){
     IOCEF = 0x0;
 }
 
-void uart_init(void){
-
-
-
-    BAUD1CON = 0x48;
-
-
-    RC1STA = 0x90;
-
-
-    TX1STA = 0x26;
-
-
-    SP1BRGL = 0x9F;
-
-
-    SP1BRGH = 0x1;
-
-    ANSELCbits.ANSC3 = 0;
-    ANSELCbits.ANSC4 = 0;
-    TRISCbits.TRISC3 = 1;
-    TRISCbits.TRISC4 = 1;
-}
-
 void int_init(void){
-        INTCONbits.GIE = 1;
+    INTCONbits.GIE = 1;
     INTCONbits.PEIE = 1;
 }

@@ -3,7 +3,7 @@
  * Author: Sjensi
  *
  * Driver for the Gy-521 gyroscope, accelerometer and temp sensor
- * Using I2C on MSSP1 for PIC16F18877
+ * Using I2C on MSSP1 for PIC16F18877, 400kHz
  * 
  * Created on February 7, 2022, 9:44 AM
  */
@@ -128,19 +128,34 @@ extern "C" {
 #define FIFO_R_W           0x74
 #define WHO_AM_I           0x75
     
-    //Variables to store read values from sensor
-    //int16_t accelo_x, accelo_y, accelo_z;
-    //int16_t gyro_x, gyro_y, gyro_z;
-    //int16_t temperature;
-    uint8_t gy_address;
+
+uint8_t gy_address;
     
      
-    /* gy_init()
-     * Brief:
-     */
-    void gy_init(uint8_t gyAdd);
+/**
+ * @brief   This function Initates the MPU6050 unit
+ *          -Assign address to common variable
+ *          -wake device up
+ *          -Set x-axis as gyro clock source
+ *          -set sample rate to 1kHz
+ *          -disable external inputs
+ *          -config for +-2g and 200°/s
+ * @param   MPU6050 I2C address         
+ * @return  void
+ * 
+ * This function must be called before any other I2C function.
+ * Only called once.
+ */
+void gy_init(uint8_t gyAdd);
     
-    void gy_Read(int16_t* Ax, int16_t* Ay, int16_t* Az, int16_t* Gx, int16_t* Gy, int16_t* Gz, int16_t* Temp);
+/**
+ * @brief   This function reads Accelerometer, Gyroscope and Temperature latest values from MPU6050
+ * @param   ptr to Accel x,y,z variables
+ *          ptr to Gyro x,y,z variables 
+ *          ptr to Temp variables        
+ * @return  Readings returned via pointers
+ */    
+void gy_Read(int16_t* Ax, int16_t* Ay, int16_t* Az, int16_t* Gx, int16_t* Gy, int16_t* Gz, int16_t* Temp);
     
 
 #ifdef	__cplusplus

@@ -1,21 +1,13 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
-"26 ./system_init.h
-[; ;./system_init.h: 26:     void system_init(void);
+"32 ./system_init.h
+[; ;./system_init.h: 32: void system_init(void);
 [v _system_init `(v ~T0 @X0 0 ef ]
-"364 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\pic\include\proc\pic16f18877.h
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\pic\include\proc\pic16f18877.h: 364:     struct {
-[s S31 :1 `uc 1 :5 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S31 . INTEDG . PEIE GIE ]
-"363
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\pic\include\proc\pic16f18877.h: 363: typedef union {
-[u S30 `S31 1 ]
-[n S30 . . ]
-"371
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\pic\include\proc\pic16f18877.h: 371: extern volatile INTCONbits_t INTCONbits __attribute__((address(0x00B)));
-[v _INTCONbits `VS30 ~T0 @X0 0 e@11 ]
-"142 ./gy_521.h
-[; ;./gy_521.h: 142:     void gy_init(uint8_t gyAdd);
+"50 ./LCD.h
+[; ;./LCD.h: 50: void LCD_init(uint8_t lcd_addr);
+[v _LCD_init `(v ~T0 @X0 0 ef1`uc ]
+"149 ./gy_521.h
+[; ;./gy_521.h: 149: void gy_init(uint8_t gyAdd);
 [v _gy_init `(v ~T0 @X0 0 ef1`uc ]
 "1025 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\pic\include\proc\pic16f18877.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\pic\include\proc\pic16f18877.h: 1025:     struct {
@@ -28,32 +20,20 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1036
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\pic\include\proc\pic16f18877.h: 1036: extern volatile LATBbits_t LATBbits __attribute__((address(0x017)));
 [v _LATBbits `VS54 ~T0 @X0 0 e@23 ]
-"144 ./gy_521.h
-[; ;./gy_521.h: 144:     void gy_Read(int16_t* Ax, int16_t* Ay, int16_t* Az, int16_t* Gx, int16_t* Gy, int16_t* Gz, int16_t* Temp);
+"459
+[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\pic\include\proc\pic16f18877.h: 459:     struct {
+[s S35 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S35 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
+"458
+[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\pic\include\proc\pic16f18877.h: 458: typedef union {
+[u S34 `S35 1 ]
+[n S34 . . ]
+"470
+[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\pic\include\proc\pic16f18877.h: 470: extern volatile PORTBbits_t PORTBbits __attribute__((address(0x00D)));
+[v _PORTBbits `VS34 ~T0 @X0 0 e@13 ]
+"158 ./gy_521.h
+[; ;./gy_521.h: 158: void gy_Read(int16_t* Ax, int16_t* Ay, int16_t* Az, int16_t* Gx, int16_t* Gy, int16_t* Gz, int16_t* Temp);
 [v _gy_Read `(v ~T0 @X0 0 ef7`*s`*s`*s`*s`*s`*s`*s ]
-"146
-[; ;./gy_521.h: 146:     void gy_TFF(int16_t* Ax, int16_t* Ay, int16_t* Az, int16_t* Gx, int16_t* Gy, int16_t* Gz, int16_t* Temp);
-[v _gy_TFF `(v ~T0 @X0 0 ef7`*s`*s`*s`*s`*s`*s`*s ]
-"111 C:\Program Files\Microchip\xc8\v2.32\pic\include\c99\stdio.h
-[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
-[v F183 `(v ~T0 @X0 1 tf1`ul ]
-"12 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\pic\include\builtins.h
-[v __delay `JF183 ~T0 @X0 0 e ]
-[p i __delay ]
-"21373 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\pic\include\proc\pic16f18877.h
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\pic\include\proc\pic16f18877.h: 21373:     struct {
-[s S972 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S972 . SSP1IF BCL1IF SSP2IF BCL2IF TXIF RCIF ]
-"21372
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\pic\include\proc\pic16f18877.h: 21372: typedef union {
-[u S971 `S972 1 ]
-[n S971 . . ]
-"21382
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\pic\include\proc\pic16f18877.h: 21382: extern volatile PIR3bits_t PIR3bits __attribute__((address(0x70F)));
-[v _PIR3bits `VS971 ~T0 @X0 0 e@1807 ]
-"3819
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\pic\include\proc\pic16f18877.h: 3819: extern volatile unsigned char TX1REG __attribute__((address(0x11A)));
-[v _TX1REG `Vuc ~T0 @X0 0 e@282 ]
 "18 ./config_bits.h
 [p x FEXTOSC  =  OFF      ]
 "19
@@ -1735,119 +1715,78 @@ Version 4.0 HI-TECH Software Intermediate Code
 "36301
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\pic\include\proc\pic16f18877.h: 36301: __asm("TOSH equ 01FEFh");
 [; <" TOSH equ 01FEFh ;# ">
-"46 ./PCA9685_driver.h
-[; ;./PCA9685_driver.h: 46:     uint8_t pca_address;
-[v _pca_address `uc ~T0 @X0 1 e ]
-"38 ./LCD.h
-[; ;./LCD.h: 38: uint8_t lcd_address, RS;
+"40 ./LCD.h
+[; ;./LCD.h: 40: uint8_t lcd_address, RS;
 [v _lcd_address `uc ~T0 @X0 1 e ]
 [v _RS `uc ~T0 @X0 1 e ]
-"39
-[; ;./LCD.h: 39: uint8_t BackLight_State = 0x08;
+"41
+[; ;./LCD.h: 41: uint8_t BackLight_State = 0x08;
 [v _BackLight_State `uc ~T0 @X0 1 e ]
 [i _BackLight_State
 -> -> 8 `i `uc
 ]
-"136 ./gy_521.h
-[; ;./gy_521.h: 136:     uint8_t gy_address;
+"47 ./PCA9685_driver.h
+[; ;./PCA9685_driver.h: 47:     uint8_t pca_address;
+[v _pca_address `uc ~T0 @X0 1 e ]
+"132 ./gy_521.h
+[; ;./gy_521.h: 132: uint8_t gy_address;
 [v _gy_address `uc ~T0 @X0 1 e ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"26 Main.c
-[; ;Main.c: 26: void main(void) {
+"23 Main.c
+[; ;Main.c: 23: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"27
-[; ;Main.c: 27:     system_init();
+"24
+[; ;Main.c: 24:     system_init();
 [e ( _system_init ..  ]
-"28
-[; ;Main.c: 28:      INTCONbits.GIE = 1;
-[e = . . _INTCONbits 0 3 -> -> 1 `i `uc ]
-"29
-[; ;Main.c: 29:     INTCONbits.PEIE = 1;
-[e = . . _INTCONbits 0 2 -> -> 1 `i `uc ]
-"32
-[; ;Main.c: 32:     int16_t accelo_x, accelo_y, accelo_z;
+"27
+[; ;Main.c: 27:     int16_t accelo_x, accelo_y, accelo_z;
 [v _accelo_x `s ~T0 @X0 1 a ]
 [v _accelo_y `s ~T0 @X0 1 a ]
 [v _accelo_z `s ~T0 @X0 1 a ]
-"33
-[; ;Main.c: 33:     int16_t gyro_x, gyro_y, gyro_z;
+"28
+[; ;Main.c: 28:     int16_t gyro_x, gyro_y, gyro_z;
 [v _gyro_x `s ~T0 @X0 1 a ]
 [v _gyro_y `s ~T0 @X0 1 a ]
 [v _gyro_z `s ~T0 @X0 1 a ]
-"34
-[; ;Main.c: 34:     int16_t temperature;
+"29
+[; ;Main.c: 29:     int16_t temperature;
 [v _temperature `s ~T0 @X0 1 a ]
-"36
-[; ;Main.c: 36:     gy_init(0x68);
+"30
+[; ;Main.c: 30:     LCD_init(0x4E);
+[e ( _LCD_init (1 -> -> 78 `i `uc ]
+"31
+[; ;Main.c: 31:     gy_init(0x68);
 [e ( _gy_init (1 -> -> 104 `i `uc ]
-"38
-[; ;Main.c: 38:     while(1){
+"33
+[; ;Main.c: 33:     while(1){
 [e :U 1617 ]
 {
-"39
-[; ;Main.c: 39:         do { LATBbits.LATB2 = ~LATBbits.LATB2; } while(0);
+"34
+[; ;Main.c: 34:         do { LATBbits.LATB2 = ~LATBbits.LATB2; } while(0);
 [e :U 1621 ]
 {
 [e = . . _LATBbits 0 2 -> ~ -> . . _LATBbits 0 2 `i `uc ]
 }
 [e :U 1620 ]
-"41
-[; ;Main.c: 41:         gy_Read(&accelo_x, &accelo_y, &accelo_z, &gyro_x, &gyro_y, &gyro_z, &temperature);
+"35
+[; ;Main.c: 35:         PORTBbits.RB4 = 0;
+[e = . . _PORTBbits 0 4 -> -> 0 `i `uc ]
+"36
+[; ;Main.c: 36:         gy_Read(&accelo_x, &accelo_y, &accelo_z, &gyro_x, &gyro_y, &gyro_z, &temperature);
 [e ( _gy_Read (4 , , , , , , &U _accelo_x &U _accelo_y &U _accelo_z &U _gyro_x &U _gyro_y &U _gyro_z &U _temperature ]
-"42
-[; ;Main.c: 42:         gy_TFF(&accelo_x, &accelo_y, &accelo_z, &gyro_x, &gyro_y, &gyro_z, &temperature);
-[e ( _gy_TFF (4 , , , , , , &U _accelo_x &U _accelo_y &U _accelo_z &U _gyro_x &U _gyro_y &U _gyro_z &U _temperature ]
-"45
-[; ;Main.c: 45:         printf("Temperature = %d \n\r", temperature);
-[e ( _printf , (. :s 1C -> _temperature `i ]
-"46
-[; ;Main.c: 46:         _delay((unsigned long)((50)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"47
-[; ;Main.c: 47:     }
+"38
+[; ;Main.c: 38:     }
 }
 [e :U 1616 ]
 [e $U 1617  ]
 [e :U 1618 ]
-"49
-[; ;Main.c: 49:     return;
+"39
+[; ;Main.c: 39:     return;
 [e $UE 1615  ]
-"50
-[; ;Main.c: 50: }
+"40
+[; ;Main.c: 40: }
 [e :UE 1615 ]
 }
-"54
-[; ;Main.c: 54: void putch(uint8_t data){
-[v _putch `(v ~T0 @X0 1 ef1`uc ]
-{
-[e :U _putch ]
-[v _data `uc ~T0 @X0 1 r1 ]
-[f ]
-"55
-[; ;Main.c: 55:     while(0 == PIR3bits.TXIF){
-[e $U 1623  ]
-[e :U 1624 ]
-{
-"56
-[; ;Main.c: 56:         continue;
-[e $U 1623  ]
-"57
-[; ;Main.c: 57:     }
-}
-[e :U 1623 ]
-"55
-[; ;Main.c: 55:     while(0 == PIR3bits.TXIF){
-[e $ == -> 0 `i -> . . _PIR3bits 0 4 `i 1624  ]
-[e :U 1625 ]
-"58
-[; ;Main.c: 58:     TX1REG = data;
-[e = _TX1REG _data ]
-"59
-[; ;Main.c: 59: }
-[e :UE 1622 ]
-}
-[p f _printf 8388736 ]
-[a 1C 84 101 109 112 101 114 97 116 117 114 101 32 61 32 37 100 32 10 13 0 ]

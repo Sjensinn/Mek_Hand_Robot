@@ -15,7 +15,7 @@
 
 
 # 1 "./LCD.h" 1
-# 15 "./LCD.h"
+# 17 "./LCD.h"
 # 1 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -20725,43 +20725,100 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 29 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\\pic\\include\\xc.h" 2 3
-# 15 "./LCD.h" 2
+# 17 "./LCD.h" 2
 
 # 1 "./I2C_MSSP1_driver.h" 1
-# 36 "./I2C_MSSP1_driver.h"
+# 40 "./I2C_MSSP1_driver.h"
 void I2C_init(void);
+# 61 "./I2C_MSSP1_driver.h"
 void I2C_Start(void);
+# 70 "./I2C_MSSP1_driver.h"
 void I2C_Wait(void);
+# 91 "./I2C_MSSP1_driver.h"
 void I2C_Write(uint8_t data);
+
+
+
+
+
+
 void I2C_RepeatedStart();
+
+
+
+
+
+
 void I2C_Stop(void);
-uint8_t I2C_Read(uint8_t ackbit);
-# 16 "./LCD.h" 2
-# 38 "./LCD.h"
+# 139 "./I2C_MSSP1_driver.h"
+int8_t I2C_Read(int8_t ackbit);
+# 18 "./LCD.h" 2
+# 40 "./LCD.h"
 uint8_t lcd_address, RS;
 uint8_t BackLight_State = 0x08;
-
+# 50 "./LCD.h"
 void LCD_init(uint8_t lcd_addr);
-
+# 59 "./LCD.h"
 void IO_Expander(unsigned char data);
-
+# 68 "./LCD.h"
 void LCD_Write_4Bit(unsigned char Nibble);
-
+# 78 "./LCD.h"
 void LCD_CMD(unsigned char CMD);
+
+
+
+
+
 
 void LCD_write_char(char data);
 
+
+
+
+
+
 void LCD_write_string(char* str);
+
+
+
+
+
+
 
 void LCD_Set_Cursor(unsigned char ROW, unsigned char COL);
 
+
+
+
+
+
 void Backlight();
+
+
+
+
+
 
 void noBacklight();
 
+
+
+
+
+
 void LCD_SL();
 
+
+
+
+
+
 void LCD_SR();
+
+
+
+
+
 
 void LCD_Clear();
 # 8 "LCD.c" 2

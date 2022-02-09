@@ -8,6 +8,9 @@
  *      *PCA9685 address: 0x80
  *      *I2c Frequency should be 100kHz
  * 
+ *  Servo min and servo max needs to be tested manually
+ *  approximately 100 min and 500 max
+ * 
  * 
  *  Example - inside main
  *      PCA_Init(130, 0x80); //first initiate
@@ -40,16 +43,47 @@ extern "C" {
 #define PCA_OE_ENABLE() LATBbits.LATB3 = 0;
 #define PCA_OE_DISABLE() LATBbits.LATB3 = 1;
     
-#define SERVOMIN  95 // This is the 'minimum' pulse length count (out of 4096)
-#define SERVOMAX  500 // This is the 'maximum' pulse length count (out of 4096)
 
     uint8_t pca_address;
 
-//Initiate the PCA with given prescalar and address
-
+/**
+ * @brief This function initializes the PCA9685 unit
+ *        This routine must be called before any other PCA9685 routines.
+ * @param   8 bit value for PCA9685 prescalar 
+ *          8 bit value for PCA9685 I2C address
+ * @return void.
+ *
+ * @code
+ * void main(void){
+ *     PCA_Init();
+ *     
+ *     while(1){   
+ *         PCA_Tasks();
+ *     }
+ * }
+ * @endcode
+ */
 void PCA_Init(uint8_t prescalar, uint8_t pca_addr);
 
-//Write to LEDn channel with given On and off value
+/**
+ * @brief This function writes values on/off to led channel ChannelN of PCA9685
+ * @param ChannelN : The number of the channel of PCA9685 to be written to
+ *              on : The on value for given channel - Set to 0 for servo
+ *             off : The off value for given channel - 5% to 10% duty cycle for Servo             
+ * @return void.
+ *
+ * @code
+ * void main(void){
+ *     PCA_Init();
+ *     
+ *     while(1){   
+ *         PCA_Write(0, 0, SERVOMIN);
+ *          __delay_ms(500);
+ *          PCA_Write(0, 0, SERVOMAX);
+ *     }
+ * }
+ * @endcode
+ */
 void PCA_write(uint8_t ChannelN, uint16_t on, uint16_t off);
     
 

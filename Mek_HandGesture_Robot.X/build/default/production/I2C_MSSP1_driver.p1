@@ -71,8 +71,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "5351
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\pic\include\proc\pic16f18877.h: 5351: extern volatile SSP1CON2bits_t SSP1CON2bits __attribute__((address(0x191)));
 [v _SSP1CON2bits `VS251 ~T0 @X0 0 e@401 ]
-"38 ./I2C_MSSP1_driver.h
-[; ;./I2C_MSSP1_driver.h: 38: void I2C_Wait(void);
+"70 ./I2C_MSSP1_driver.h
+[; ;./I2C_MSSP1_driver.h: 70: void I2C_Wait(void);
 [v _I2C_Wait `(v ~T0 @X0 0 ef ]
 "1025 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\pic\include\proc\pic16f18877.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\pic\include\proc\pic16f18877.h: 1025:     struct {
@@ -1962,15 +1962,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 1628 ]
 }
 "63
-[; ;I2C_MSSP1_driver.c: 63:  uint8_t I2C_Read(uint8_t ackbit){
-[v _I2C_Read `(uc ~T0 @X0 1 ef1`uc ]
+[; ;I2C_MSSP1_driver.c: 63:  int8_t I2C_Read(int8_t ackbit){
+[v _I2C_Read `(c ~T0 @X0 1 ef1`c ]
 {
 [e :U _I2C_Read ]
-[v _ackbit `uc ~T0 @X0 1 r1 ]
+[v _ackbit `c ~T0 @X0 1 r1 ]
 [f ]
 "64
-[; ;I2C_MSSP1_driver.c: 64:     uint8_t tempreadbuffer;
-[v _tempreadbuffer `uc ~T0 @X0 1 a ]
+[; ;I2C_MSSP1_driver.c: 64:     int8_t tempreadbuffer;
+[v _tempreadbuffer `c ~T0 @X0 1 a ]
 "66
 [; ;I2C_MSSP1_driver.c: 66:     SSP1CON2bits.RCEN = 1;
 [e = . . _SSP1CON2bits 0 3 -> -> 1 `i `uc ]
@@ -1979,13 +1979,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _I2C_Wait ..  ]
 "69
 [; ;I2C_MSSP1_driver.c: 69:     tempreadbuffer = SSP1BUF;
-[e = _tempreadbuffer _SSP1BUF ]
+[e = _tempreadbuffer -> _SSP1BUF `c ]
 "70
 [; ;I2C_MSSP1_driver.c: 70:     SSP1STATbits.BF = 0;
 [e = . . _SSP1STATbits 0 0 -> -> 0 `i `uc ]
 "72
 [; ;I2C_MSSP1_driver.c: 72:     SSP1CON2bits.ACKDT = (ackbit);
-[e = . . _SSP1CON2bits 0 5 _ackbit ]
+[e = . . _SSP1CON2bits 0 5 -> _ackbit `uc ]
 "73
 [; ;I2C_MSSP1_driver.c: 73:     SSP1CON2bits.ACKEN = 1;
 [e = . . _SSP1CON2bits 0 4 -> -> 1 `i `uc ]

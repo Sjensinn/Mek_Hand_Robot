@@ -13,21 +13,54 @@ extern "C" {
 #endif
 
 #include "config_bits.h"
-#include "I2C_MSSP1_driver.h"
-#include "PCA9685_driver.h"
 #include "uart.h"
-//#include "timer1.h"
-
     
 //Pin macros
 #ifndef LED_TOGGLE()            
 #define LED_TOGGLE() do { LATBbits.LATB2 = ~LATBbits.LATB2; } while(0)
 #endif
 
-    void system_init(void);
-    void clock_init(void);
-    void pin_init(void);
-    void int_init(void);
+/**
+ * @brief   This function initializes clock, pins, i2c, and interrupts
+ * @param   void          
+ * @return  void
+ *
+ *  Must be called for systems functionality
+ *  Called at the beginning of the program
+ *  Called only once.
+ */
+void system_init(void);
+
+/**
+ * @brief   This function initializes the systems clock
+ * @param   void          
+ * @return  void
+ *
+ *  Called by system_init()
+ *  16MHz clock frequency using HFINTOSC
+ * 
+ */
+void clock_init(void);
+
+/**
+ * @brief   This function initializes the systems pins
+ * @param   void          
+ * @return void
+ *  
+ *  Sets appropriate analog/digital
+ *  Sets appropriate input/output
+ *  Sets appropriate inital values
+ */
+void pin_init(void);
+
+/**
+ * @brief   This function enables the systems interrupts
+ * @param   void          
+ * @return  void
+ *
+ *  Does not manage interrupt routines.
+ */
+void int_init(void);
     
     
 

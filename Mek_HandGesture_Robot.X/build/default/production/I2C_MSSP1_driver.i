@@ -20720,14 +20720,30 @@ extern __bank0 __bit __timeout;
 # 2 "I2C_MSSP1_driver.c" 2
 
 # 1 "./I2C_MSSP1_driver.h" 1
-# 36 "./I2C_MSSP1_driver.h"
+# 40 "./I2C_MSSP1_driver.h"
 void I2C_init(void);
+# 61 "./I2C_MSSP1_driver.h"
 void I2C_Start(void);
+# 70 "./I2C_MSSP1_driver.h"
 void I2C_Wait(void);
+# 91 "./I2C_MSSP1_driver.h"
 void I2C_Write(uint8_t data);
+
+
+
+
+
+
 void I2C_RepeatedStart();
+
+
+
+
+
+
 void I2C_Stop(void);
-uint8_t I2C_Read(uint8_t ackbit);
+# 139 "./I2C_MSSP1_driver.h"
+int8_t I2C_Read(int8_t ackbit);
 # 3 "I2C_MSSP1_driver.c" 2
 
 
@@ -20789,8 +20805,8 @@ void I2C_Write(uint8_t data){
 }
 
 
- uint8_t I2C_Read(uint8_t ackbit){
-    uint8_t tempreadbuffer;
+ int8_t I2C_Read(int8_t ackbit){
+    int8_t tempreadbuffer;
 
     SSP1CON2bits.RCEN = 1;
     I2C_Wait();

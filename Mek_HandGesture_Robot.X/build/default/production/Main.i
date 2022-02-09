@@ -45,8 +45,34 @@
 
 # 1 "./system_init.h" 1
 # 16 "./system_init.h"
-# 1 "./I2C_MSSP1_driver.h" 1
-# 32 "./I2C_MSSP1_driver.h"
+# 1 "./uart.h" 1
+# 26 "./uart.h"
+void uart_init(void);
+
+
+
+
+
+
+void uart_Write(unsigned char data);
+
+
+
+
+
+
+void uart_Write_String(char* buf);
+# 16 "./system_init.h" 2
+# 32 "./system_init.h"
+void system_init(void);
+# 43 "./system_init.h"
+void clock_init(void);
+# 54 "./system_init.h"
+void pin_init(void);
+# 63 "./system_init.h"
+void int_init(void);
+# 15 "Main.c" 2
+
 # 1 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -20756,39 +20782,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 29 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\\pic\\include\\xc.h" 2 3
-# 32 "./I2C_MSSP1_driver.h" 2
-
-
-
-
-void I2C_init(void);
-void I2C_Start(void);
-void I2C_Wait(void);
-void I2C_Write(uint8_t data);
-void I2C_RepeatedStart();
-void I2C_Stop(void);
-uint8_t I2C_Read(uint8_t ackbit);
-# 16 "./system_init.h" 2
-
-# 1 "./PCA9685_driver.h" 1
-# 46 "./PCA9685_driver.h"
-    uint8_t pca_address;
-
-
-
-void PCA_Init(uint8_t prescalar, uint8_t pca_addr);
-
-
-void PCA_write(uint8_t ChannelN, uint16_t on, uint16_t off);
-# 17 "./system_init.h" 2
-# 26 "./system_init.h"
-    void system_init(void);
-    void clock_init(void);
-    void pin_init(void);
-    void uart_init(void);
-    void int_init(void);
-# 15 "Main.c" 2
-
+# 16 "Main.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdio.h" 1 3
 # 24 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdio.h" 3
@@ -20931,87 +20925,138 @@ char *tempnam(const char *, const char *);
 # 17 "Main.c" 2
 
 # 1 "./LCD.h" 1
-# 38 "./LCD.h"
+# 18 "./LCD.h"
+# 1 "./I2C_MSSP1_driver.h" 1
+# 40 "./I2C_MSSP1_driver.h"
+void I2C_init(void);
+# 61 "./I2C_MSSP1_driver.h"
+void I2C_Start(void);
+# 70 "./I2C_MSSP1_driver.h"
+void I2C_Wait(void);
+# 91 "./I2C_MSSP1_driver.h"
+void I2C_Write(uint8_t data);
+
+
+
+
+
+
+void I2C_RepeatedStart();
+
+
+
+
+
+
+void I2C_Stop(void);
+# 139 "./I2C_MSSP1_driver.h"
+int8_t I2C_Read(int8_t ackbit);
+# 18 "./LCD.h" 2
+# 40 "./LCD.h"
 uint8_t lcd_address, RS;
 uint8_t BackLight_State = 0x08;
-
+# 50 "./LCD.h"
 void LCD_init(uint8_t lcd_addr);
-
+# 59 "./LCD.h"
 void IO_Expander(unsigned char data);
-
+# 68 "./LCD.h"
 void LCD_Write_4Bit(unsigned char Nibble);
-
+# 78 "./LCD.h"
 void LCD_CMD(unsigned char CMD);
+
+
+
+
+
 
 void LCD_write_char(char data);
 
+
+
+
+
+
 void LCD_write_string(char* str);
+
+
+
+
+
+
 
 void LCD_Set_Cursor(unsigned char ROW, unsigned char COL);
 
+
+
+
+
+
 void Backlight();
+
+
+
+
+
 
 void noBacklight();
 
+
+
+
+
+
 void LCD_SL();
 
+
+
+
+
+
 void LCD_SR();
+
+
+
+
+
 
 void LCD_Clear();
 # 18 "Main.c" 2
 
+# 1 "./PCA9685_driver.h" 1
+# 47 "./PCA9685_driver.h"
+    uint8_t pca_address;
+# 66 "./PCA9685_driver.h"
+void PCA_Init(uint8_t prescalar, uint8_t pca_addr);
+# 87 "./PCA9685_driver.h"
+void PCA_write(uint8_t ChannelN, uint16_t on, uint16_t off);
+# 19 "Main.c" 2
 
 
 # 1 "./gy_521.h" 1
-# 136 "./gy_521.h"
-    uint8_t gy_address;
-
-
-
-
-
-    void gy_init(uint8_t gyAdd);
-
-    void gy_Read(int16_t* Ax, int16_t* Ay, int16_t* Az, int16_t* Gx, int16_t* Gy, int16_t* Gz, int16_t* Temp);
-
-    void gy_TFF(int16_t* Ax, int16_t* Ay, int16_t* Az, int16_t* Gx, int16_t* Gy, int16_t* Gz, int16_t* Temp);
+# 132 "./gy_521.h"
+uint8_t gy_address;
+# 149 "./gy_521.h"
+void gy_init(uint8_t gyAdd);
+# 158 "./gy_521.h"
+void gy_Read(int16_t* Ax, int16_t* Ay, int16_t* Az, int16_t* Gx, int16_t* Gy, int16_t* Gz, int16_t* Temp);
 # 21 "Main.c" 2
 
 
-
-void putch(uint8_t txData);
-
 void main(void) {
     system_init();
-     INTCONbits.GIE = 1;
-    INTCONbits.PEIE = 1;
 
 
     int16_t accelo_x, accelo_y, accelo_z;
     int16_t gyro_x, gyro_y, gyro_z;
     int16_t temperature;
-
+    LCD_init(0x4E);
     gy_init(0x68);
 
     while(1){
         do { LATBbits.LATB2 = ~LATBbits.LATB2; } while(0);
-
+        PORTBbits.RB4 = 0;
         gy_Read(&accelo_x, &accelo_y, &accelo_z, &gyro_x, &gyro_y, &gyro_z, &temperature);
-        gy_TFF(&accelo_x, &accelo_y, &accelo_z, &gyro_x, &gyro_y, &gyro_z, &temperature);
 
-
-        printf("Temperature = %d \n\r", temperature);
-        _delay((unsigned long)((50)*(16000000/4000.0)));
     }
-
     return;
-}
-
-
-
-void putch(uint8_t data){
-    while(0 == PIR3bits.TXIF){
-        continue;
-    }
-    TX1REG = data;
 }

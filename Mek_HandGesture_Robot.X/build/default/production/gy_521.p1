@@ -3,18 +3,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 "12 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\pic\include\builtins.h
 [v __delay `JF183 ~T0 @X0 0 e ]
 [p i __delay ]
-"37 ./I2C_MSSP1_driver.h
-[; ;./I2C_MSSP1_driver.h: 37: void I2C_Start(void);
+"61 ./I2C_MSSP1_driver.h
+[; ;./I2C_MSSP1_driver.h: 61: void I2C_Start(void);
 [v _I2C_Start `(v ~T0 @X0 0 ef ]
-"39
-[; ;./I2C_MSSP1_driver.h: 39: void I2C_Write(uint8_t data);
+"91
+[; ;./I2C_MSSP1_driver.h: 91: void I2C_Write(uint8_t data);
 [v _I2C_Write `(v ~T0 @X0 0 ef1`uc ]
-"41
-[; ;./I2C_MSSP1_driver.h: 41: void I2C_Stop(void);
+"105
+[; ;./I2C_MSSP1_driver.h: 105: void I2C_Stop(void);
 [v _I2C_Stop `(v ~T0 @X0 0 ef ]
-"42
-[; ;./I2C_MSSP1_driver.h: 42: uint8_t I2C_Read(uint8_t ackbit);
-[v _I2C_Read `(uc ~T0 @X0 0 ef1`uc ]
+"139
+[; ;./I2C_MSSP1_driver.h: 139: int8_t I2C_Read(int8_t ackbit);
+[v _I2C_Read `(c ~T0 @X0 0 ef1`c ]
 "55 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\pic\include\proc\pic16f18877.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\pic\include\proc\pic16f18877.h: 55: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -1650,118 +1650,116 @@ Version 4.0 HI-TECH Software Intermediate Code
 "36301
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\pic\include\proc\pic16f18877.h: 36301: __asm("TOSH equ 01FEFh");
 [; <" TOSH equ 01FEFh ;# ">
-"136 ./gy_521.h
-[; ;./gy_521.h: 136:     uint8_t gy_address;
+"132 ./gy_521.h
+[; ;./gy_521.h: 132: uint8_t gy_address;
 [v _gy_address `uc ~T0 @X0 1 e ]
-"5 gy_521.c
-[; ;gy_521.c: 5: void gy_init(uint8_t gyAdd){
+"40 ./LCD.h
+[; ;./LCD.h: 40: uint8_t lcd_address, RS;
+[v _lcd_address `uc ~T0 @X0 1 e ]
+[v _RS `uc ~T0 @X0 1 e ]
+"41
+[; ;./LCD.h: 41: uint8_t BackLight_State = 0x08;
+[v _BackLight_State `uc ~T0 @X0 1 e ]
+[i _BackLight_State
+-> -> 8 `i `uc
+]
+"10 gy_521.c
+[; ;gy_521.c: 10: void gy_init(uint8_t gyAdd){
 [v _gy_init `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _gy_init ]
 [v _gyAdd `uc ~T0 @X0 1 r1 ]
 [f ]
-"6
-[; ;gy_521.c: 6:     gy_address = gyAdd << 1;
-[e = _gy_address -> << -> _gyAdd `i -> 1 `i `uc ]
-"7
-[; ;gy_521.c: 7:     _delay((unsigned long)((200)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"10
-[; ;gy_521.c: 10:     I2C_Start();
-[e ( _I2C_Start ..  ]
 "11
-[; ;gy_521.c: 11:     I2C_Write(gy_address);
-[e ( _I2C_Write (1 _gy_address ]
+[; ;gy_521.c: 11:     gy_address = gyAdd << 1;
+[e = _gy_address -> << -> _gyAdd `i -> 1 `i `uc ]
 "12
-[; ;gy_521.c: 12:     I2C_Write(0x19);
-[e ( _I2C_Write (1 -> -> 25 `i `uc ]
-"13
-[; ;gy_521.c: 13:     I2C_Write(0x07);
-[e ( _I2C_Write (1 -> -> 7 `i `uc ]
-"14
-[; ;gy_521.c: 14:     I2C_Stop();
-[e ( _I2C_Stop ..  ]
+[; ;gy_521.c: 12:     _delay((unsigned long)((200)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"15
+[; ;gy_521.c: 15:     I2C_Start();
+[e ( _I2C_Start ..  ]
+"16
+[; ;gy_521.c: 16:     I2C_Write(gy_address);
+[e ( _I2C_Write (1 _gy_address ]
 "17
-[; ;gy_521.c: 17:     I2C_Start();
-[e ( _I2C_Start ..  ]
+[; ;gy_521.c: 17:     I2C_Write(0x19);
+[e ( _I2C_Write (1 -> -> 25 `i `uc ]
 "18
-[; ;gy_521.c: 18:     I2C_Write(gy_address);
-[e ( _I2C_Write (1 _gy_address ]
+[; ;gy_521.c: 18:     I2C_Write(0x07);
+[e ( _I2C_Write (1 -> -> 7 `i `uc ]
 "19
-[; ;gy_521.c: 19:     I2C_Write(0x6B);
-[e ( _I2C_Write (1 -> -> 107 `i `uc ]
-"20
-[; ;gy_521.c: 20:     I2C_Write(0x01);
-[e ( _I2C_Write (1 -> -> 1 `i `uc ]
-"21
-[; ;gy_521.c: 21:     I2C_Stop();
+[; ;gy_521.c: 19:     I2C_Stop();
 [e ( _I2C_Stop ..  ]
+"22
+[; ;gy_521.c: 22:     I2C_Start();
+[e ( _I2C_Start ..  ]
+"23
+[; ;gy_521.c: 23:     I2C_Write(gy_address);
+[e ( _I2C_Write (1 _gy_address ]
 "24
-[; ;gy_521.c: 24:     I2C_Start();
-[e ( _I2C_Start ..  ]
+[; ;gy_521.c: 24:     I2C_Write(0x6B);
+[e ( _I2C_Write (1 -> -> 107 `i `uc ]
 "25
-[; ;gy_521.c: 25:     I2C_Write(gy_address);
-[e ( _I2C_Write (1 _gy_address ]
-"26
-[; ;gy_521.c: 26:     I2C_Write(0x1A);
-[e ( _I2C_Write (1 -> -> 26 `i `uc ]
-"27
-[; ;gy_521.c: 27:     I2C_Write(0x00);
-[e ( _I2C_Write (1 -> -> 0 `i `uc ]
-"28
-[; ;gy_521.c: 28:     I2C_Stop();
-[e ( _I2C_Stop ..  ]
-"31
-[; ;gy_521.c: 31:     I2C_Start();
-[e ( _I2C_Start ..  ]
-"32
-[; ;gy_521.c: 32:     I2C_Write(gy_address);
-[e ( _I2C_Write (1 _gy_address ]
-"33
-[; ;gy_521.c: 33:     I2C_Write(0x1C);
-[e ( _I2C_Write (1 -> -> 28 `i `uc ]
-"34
-[; ;gy_521.c: 34:     I2C_Write(0x00);
-[e ( _I2C_Write (1 -> -> 0 `i `uc ]
-"35
-[; ;gy_521.c: 35:     I2C_Stop();
-[e ( _I2C_Stop ..  ]
-"38
-[; ;gy_521.c: 38:     I2C_Start();
-[e ( _I2C_Start ..  ]
-"39
-[; ;gy_521.c: 39:     I2C_Write(gy_address);
-[e ( _I2C_Write (1 _gy_address ]
-"40
-[; ;gy_521.c: 40:     I2C_Write(0x1B);
-[e ( _I2C_Write (1 -> -> 27 `i `uc ]
-"41
-[; ;gy_521.c: 41:     I2C_Write(0x18);
-[e ( _I2C_Write (1 -> -> 24 `i `uc ]
-"42
-[; ;gy_521.c: 42:     I2C_Stop();
-[e ( _I2C_Stop ..  ]
-"45
-[; ;gy_521.c: 45:     I2C_Start();
-[e ( _I2C_Start ..  ]
-"46
-[; ;gy_521.c: 46:     I2C_Write(gy_address);
-[e ( _I2C_Write (1 _gy_address ]
-"47
-[; ;gy_521.c: 47:     I2C_Write(0x38);
-[e ( _I2C_Write (1 -> -> 56 `i `uc ]
-"48
-[; ;gy_521.c: 48:     I2C_Write(0x01);
+[; ;gy_521.c: 25:     I2C_Write(0x01);
 [e ( _I2C_Write (1 -> -> 1 `i `uc ]
-"49
-[; ;gy_521.c: 49:     I2C_Stop();
+"26
+[; ;gy_521.c: 26:     I2C_Stop();
 [e ( _I2C_Stop ..  ]
-"51
-[; ;gy_521.c: 51: }
-[e :UE 1613 ]
+"29
+[; ;gy_521.c: 29:     I2C_Start();
+[e ( _I2C_Start ..  ]
+"30
+[; ;gy_521.c: 30:     I2C_Write(gy_address);
+[e ( _I2C_Write (1 _gy_address ]
+"31
+[; ;gy_521.c: 31:     I2C_Write(0x1A);
+[e ( _I2C_Write (1 -> -> 26 `i `uc ]
+"32
+[; ;gy_521.c: 32:     I2C_Write(0x00);
+[e ( _I2C_Write (1 -> -> 0 `i `uc ]
+"33
+[; ;gy_521.c: 33:     I2C_Stop();
+[e ( _I2C_Stop ..  ]
+"36
+[; ;gy_521.c: 36:     I2C_Start();
+[e ( _I2C_Start ..  ]
+"37
+[; ;gy_521.c: 37:     I2C_Write(gy_address);
+[e ( _I2C_Write (1 _gy_address ]
+"38
+[; ;gy_521.c: 38:     I2C_Write(0x1B);
+[e ( _I2C_Write (1 -> -> 27 `i `uc ]
+"39
+[; ;gy_521.c: 39:     I2C_Write(0x00);
+[e ( _I2C_Write (1 -> -> 0 `i `uc ]
+"40
+[; ;gy_521.c: 40:     I2C_Write(0x00);
+[e ( _I2C_Write (1 -> -> 0 `i `uc ]
+"41
+[; ;gy_521.c: 41:     I2C_Stop();
+[e ( _I2C_Stop ..  ]
+"44
+[; ;gy_521.c: 44:     I2C_Start();
+[e ( _I2C_Start ..  ]
+"45
+[; ;gy_521.c: 45:     I2C_Write(gy_address);
+[e ( _I2C_Write (1 _gy_address ]
+"46
+[; ;gy_521.c: 46:     I2C_Write(0x38);
+[e ( _I2C_Write (1 -> -> 56 `i `uc ]
+"47
+[; ;gy_521.c: 47:     I2C_Write(0x00);
+[e ( _I2C_Write (1 -> -> 0 `i `uc ]
+"48
+[; ;gy_521.c: 48:     I2C_Stop();
+[e ( _I2C_Stop ..  ]
+"49
+[; ;gy_521.c: 49: }
+[e :UE 1615 ]
 }
-"53
-[; ;gy_521.c: 53: void gy_Read(int16_t* Ax, int16_t* Ay, int16_t* Az, int16_t* Gx, int16_t* Gy, int16_t* Gz, int16_t* Temp){
+"51
+[; ;gy_521.c: 51: void gy_Read(int16_t* Ax, int16_t* Ay, int16_t* Az, int16_t* Gx, int16_t* Gy, int16_t* Gz, int16_t* Temp){
 [v _gy_Read `(v ~T0 @X0 1 ef7`*s`*s`*s`*s`*s`*s`*s ]
 {
 [e :U _gy_Read ]
@@ -1773,93 +1771,104 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _Gz `*s ~T0 @X0 1 r6 ]
 [v _Temp `*s ~T0 @X0 1 r7 ]
 [f ]
-"55
-[; ;gy_521.c: 55:     I2C_Start();
-[e ( _I2C_Start ..  ]
+"52
+[; ;gy_521.c: 52:     int8_t axtu, axtl, aytu, aytl ,aztu, aztl, gxtu, gxtl, gytu, gytl, gztu, gztl, ttu, ttl;
+[v _axtu `c ~T0 @X0 1 a ]
+[v _axtl `c ~T0 @X0 1 a ]
+[v _aytu `c ~T0 @X0 1 a ]
+[v _aytl `c ~T0 @X0 1 a ]
+[v _aztu `c ~T0 @X0 1 a ]
+[v _aztl `c ~T0 @X0 1 a ]
+[v _gxtu `c ~T0 @X0 1 a ]
+[v _gxtl `c ~T0 @X0 1 a ]
+[v _gytu `c ~T0 @X0 1 a ]
+[v _gytl `c ~T0 @X0 1 a ]
+[v _gztu `c ~T0 @X0 1 a ]
+[v _gztl `c ~T0 @X0 1 a ]
+[v _ttu `c ~T0 @X0 1 a ]
+[v _ttl `c ~T0 @X0 1 a ]
+"53
+[; ;gy_521.c: 53:     short axtf, aytf, aztf, gxtf, gytf, gztf, ttf;
+[v _axtf `s ~T0 @X0 1 a ]
+[v _aytf `s ~T0 @X0 1 a ]
+[v _aztf `s ~T0 @X0 1 a ]
+[v _gxtf `s ~T0 @X0 1 a ]
+[v _gytf `s ~T0 @X0 1 a ]
+[v _gztf `s ~T0 @X0 1 a ]
+[v _ttf `s ~T0 @X0 1 a ]
+"54
+[; ;gy_521.c: 54:     char buffer[40];
+[v _buffer `uc ~T0 @X0 -> 40 `i a ]
 "56
-[; ;gy_521.c: 56:     I2C_Write(gy_address);
-[e ( _I2C_Write (1 _gy_address ]
-"57
-[; ;gy_521.c: 57:     I2C_Write(0x3B);
-[e ( _I2C_Write (1 -> -> 59 `i `uc ]
-"58
-[; ;gy_521.c: 58:     I2C_Stop();
-[e ( _I2C_Stop ..  ]
-"61
-[; ;gy_521.c: 61:     I2C_Start();
+[; ;gy_521.c: 56:     I2C_Start();
 [e ( _I2C_Start ..  ]
+"57
+[; ;gy_521.c: 57:     I2C_Write(gy_address);
+[e ( _I2C_Write (1 _gy_address ]
+"58
+[; ;gy_521.c: 58:     I2C_Write(0x3B);
+[e ( _I2C_Write (1 -> -> 59 `i `uc ]
 "62
-[; ;gy_521.c: 62:     I2C_Write(gy_address | 0x01);
-[e ( _I2C_Write (1 -> | -> _gy_address `i -> 1 `i `uc ]
+[; ;gy_521.c: 62:     I2C_Start();
+[e ( _I2C_Start ..  ]
 "63
-[; ;gy_521.c: 63:     *Ax = ((uint16_t)I2C_Read(0)<<8) | I2C_Read(0);
-[e = *U _Ax -> | << -> -> ( _I2C_Read (1 -> -> 0 `i `uc `us `ui -> 8 `i -> ( _I2C_Read (1 -> -> 0 `i `uc `ui `s ]
-"64
-[; ;gy_521.c: 64:     *Ay = ((uint16_t)I2C_Read(0)<<8) | I2C_Read(0);
-[e = *U _Ay -> | << -> -> ( _I2C_Read (1 -> -> 0 `i `uc `us `ui -> 8 `i -> ( _I2C_Read (1 -> -> 0 `i `uc `ui `s ]
+[; ;gy_521.c: 63:     I2C_Write(gy_address | 0x01);
+[e ( _I2C_Write (1 -> | -> _gy_address `i -> 1 `i `uc ]
 "65
-[; ;gy_521.c: 65:     *Az = ((uint16_t)I2C_Read(0)<<8) | I2C_Read(0);
-[e = *U _Az -> | << -> -> ( _I2C_Read (1 -> -> 0 `i `uc `us `ui -> 8 `i -> ( _I2C_Read (1 -> -> 0 `i `uc `ui `s ]
+[; ;gy_521.c: 65:     axtu = I2C_Read(0);
+[e = _axtu ( _I2C_Read (1 -> -> 0 `i `c ]
 "66
-[; ;gy_521.c: 66:     *Temp = ((uint16_t)I2C_Read(0)<<8) | (int)I2C_Read(0);
-[e = *U _Temp -> | << -> -> ( _I2C_Read (1 -> -> 0 `i `uc `us `ui -> 8 `i -> -> ( _I2C_Read (1 -> -> 0 `i `uc `i `ui `s ]
+[; ;gy_521.c: 66:     axtl = I2C_Read(0);
+[e = _axtl ( _I2C_Read (1 -> -> 0 `i `c ]
 "67
-[; ;gy_521.c: 67:     *Gx = ((uint16_t)I2C_Read(0)<<8) | (int)I2C_Read(0);
-[e = *U _Gx -> | << -> -> ( _I2C_Read (1 -> -> 0 `i `uc `us `ui -> 8 `i -> -> ( _I2C_Read (1 -> -> 0 `i `uc `i `ui `s ]
+[; ;gy_521.c: 67:     axtf = (axtu << 8) | axtl;
+[e = _axtf -> | << -> _axtu `i -> 8 `i -> _axtl `i `s ]
 "68
-[; ;gy_521.c: 68:     *Gy = ((uint16_t)I2C_Read(0)<<8) | (int)I2C_Read(0);
-[e = *U _Gy -> | << -> -> ( _I2C_Read (1 -> -> 0 `i `uc `us `ui -> 8 `i -> -> ( _I2C_Read (1 -> -> 0 `i `uc `i `ui `s ]
+[; ;gy_521.c: 68:     aytu = (I2C_Read(0)<<8) | I2C_Read(0);
+[e = _aytu -> | << -> ( _I2C_Read (1 -> -> 0 `i `c `i -> 8 `i -> ( _I2C_Read (1 -> -> 0 `i `c `i `c ]
 "69
-[; ;gy_521.c: 69:     *Gz = ((uint16_t)I2C_Read(0)<<8) | (int)I2C_Read(1);
-[e = *U _Gz -> | << -> -> ( _I2C_Read (1 -> -> 0 `i `uc `us `ui -> 8 `i -> -> ( _I2C_Read (1 -> -> 1 `i `uc `i `ui `s ]
+[; ;gy_521.c: 69:     aztu = (I2C_Read(0)<<8) | I2C_Read(0);
+[e = _aztu -> | << -> ( _I2C_Read (1 -> -> 0 `i `c `i -> 8 `i -> ( _I2C_Read (1 -> -> 0 `i `c `i `c ]
 "70
-[; ;gy_521.c: 70:     I2C_Stop();
-[e ( _I2C_Stop ..  ]
+[; ;gy_521.c: 70:     ttu = (I2C_Read(0)<<8) | I2C_Read(0);
+[e = _ttu -> | << -> ( _I2C_Read (1 -> -> 0 `i `c `i -> 8 `i -> ( _I2C_Read (1 -> -> 0 `i `c `i `c ]
+"71
+[; ;gy_521.c: 71:     gxtu = (I2C_Read(0)<<8) | I2C_Read(0);
+[e = _gxtu -> | << -> ( _I2C_Read (1 -> -> 0 `i `c `i -> 8 `i -> ( _I2C_Read (1 -> -> 0 `i `c `i `c ]
 "72
-[; ;gy_521.c: 72:     return;
-[e $UE 1614  ]
+[; ;gy_521.c: 72:     gytu = (I2C_Read(0)<<8) | I2C_Read(0);
+[e = _gytu -> | << -> ( _I2C_Read (1 -> -> 0 `i `c `i -> 8 `i -> ( _I2C_Read (1 -> -> 0 `i `c `i `c ]
 "73
-[; ;gy_521.c: 73: }
-[e :UE 1614 ]
-}
+[; ;gy_521.c: 73:     gztu = (I2C_Read(0)<<8) | I2C_Read(1);
+[e = _gztu -> | << -> ( _I2C_Read (1 -> -> 0 `i `c `i -> 8 `i -> ( _I2C_Read (1 -> -> 1 `i `c `i `c ]
+"74
+[; ;gy_521.c: 74:     I2C_Stop();
+[e ( _I2C_Stop ..  ]
 "76
-[; ;gy_521.c: 76: void gy_TFF(int16_t* Ax, int16_t* Ay, int16_t* Az, int16_t* Gx, int16_t* Gy, int16_t* Gz, int16_t* Temp){
-[v _gy_TFF `(v ~T0 @X0 1 ef7`*s`*s`*s`*s`*s`*s`*s ]
-{
-[e :U _gy_TFF ]
-[v _Ax `*s ~T0 @X0 1 r1 ]
-[v _Ay `*s ~T0 @X0 1 r2 ]
-[v _Az `*s ~T0 @X0 1 r3 ]
-[v _Gx `*s ~T0 @X0 1 r4 ]
-[v _Gy `*s ~T0 @X0 1 r5 ]
-[v _Gz `*s ~T0 @X0 1 r6 ]
-[v _Temp `*s ~T0 @X0 1 r7 ]
-[f ]
+[; ;gy_521.c: 76:     axtf = (float)axtu/16384.0;
+[e = _axtf -> / -> -> _axtu `f `d .16384.0 `s ]
 "77
-[; ;gy_521.c: 77:     *Ax = (float)*Ax/16384.0;
-[e = *U _Ax -> / -> -> *U _Ax `f `d .16384.0 `s ]
+[; ;gy_521.c: 77:     aytf = (float)aytu/16384.0;
+[e = _aytf -> / -> -> _aytu `f `d .16384.0 `s ]
 "78
-[; ;gy_521.c: 78:     *Ay = (float)*Ay/16384.0;
-[e = *U _Ay -> / -> -> *U _Ay `f `d .16384.0 `s ]
+[; ;gy_521.c: 78:     aztf = (float)aztu/16384.0;
+[e = _aztf -> / -> -> _aztu `f `d .16384.0 `s ]
 "79
-[; ;gy_521.c: 79:     *Az = (float)*Az/16384.0;
-[e = *U _Az -> / -> -> *U _Az `f `d .16384.0 `s ]
+[; ;gy_521.c: 79:     gxtf = (float)gxtu/131.0;
+[e = _gxtf -> / -> -> _gxtu `f `d .131.0 `s ]
 "80
-[; ;gy_521.c: 80:     *Gx = (float)*Gx/131.0;
-[e = *U _Gx -> / -> -> *U _Gx `f `d .131.0 `s ]
+[; ;gy_521.c: 80:     gytf = (float)gytu/131.0;
+[e = _gytf -> / -> -> _gytu `f `d .131.0 `s ]
 "81
-[; ;gy_521.c: 81:     *Gy = (float)*Gy/131.0;
-[e = *U _Gy -> / -> -> *U _Gy `f `d .131.0 `s ]
+[; ;gy_521.c: 81:     gztf = (float)gztu/131.0;
+[e = _gztf -> / -> -> _gztu `f `d .131.0 `s ]
 "82
-[; ;gy_521.c: 82:     *Gz = (float)*Gz/131.0;
-[e = *U _Gz -> / -> -> *U _Gz `f `d .131.0 `s ]
-"83
-[; ;gy_521.c: 83:     *Temp = ((float)*Temp/340.00)+36.53;
-[e = *U _Temp -> + / -> -> *U _Temp `f `d .340.00 .36.53 `s ]
-"85
-[; ;gy_521.c: 85:     return;
-[e $UE 1615  ]
-"86
-[; ;gy_521.c: 86: }
-[e :UE 1615 ]
+[; ;gy_521.c: 82:     ttf = ((float)ttu/340.00)+36.53;
+[e = _ttf -> + / -> -> _ttu `f `d .340.00 .36.53 `s ]
+"116
+[; ;gy_521.c: 116:     return;
+[e $UE 1616  ]
+"117
+[; ;gy_521.c: 117: }
+[e :UE 1616 ]
 }

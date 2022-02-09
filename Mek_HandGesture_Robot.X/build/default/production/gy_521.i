@@ -8,8 +8,6 @@
 # 2 "<built-in>" 2
 # 1 "gy_521.c" 2
 
-# 1 "./gy_521.h" 1
-# 18 "./gy_521.h"
 # 1 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -20719,31 +20717,274 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 29 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16F1xxxx_DFP/1.9.163/xc8\\pic\\include\\xc.h" 2 3
-# 18 "./gy_521.h" 2
-# 136 "./gy_521.h"
-    uint8_t gy_address;
-
-
-
-
-
-    void gy_init(uint8_t gyAdd);
-
-    void gy_Read(int16_t* Ax, int16_t* Ay, int16_t* Az, int16_t* Gx, int16_t* Gy, int16_t* Gz, int16_t* Temp);
-
-    void gy_TFF(int16_t* Ax, int16_t* Ay, int16_t* Az, int16_t* Gx, int16_t* Gy, int16_t* Gz, int16_t* Temp);
 # 2 "gy_521.c" 2
 
-# 1 "./I2C_MSSP1_driver.h" 1
-# 36 "./I2C_MSSP1_driver.h"
-void I2C_init(void);
-void I2C_Start(void);
-void I2C_Wait(void);
-void I2C_Write(uint8_t data);
-void I2C_RepeatedStart();
-void I2C_Stop(void);
-uint8_t I2C_Read(uint8_t ackbit);
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdio.h" 1 3
+# 24 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdio.h" 3
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 1 3
+
+
+
+
+
+typedef void * va_list[1];
+
+
+
+
+typedef void * __isoc_va_list[1];
+# 137 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long ssize_t;
+# 246 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long long off_t;
+# 399 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef struct _IO_FILE FILE;
+# 24 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdio.h" 2 3
+# 52 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdio.h" 3
+typedef union _G_fpos64_t {
+ char __opaque[16];
+ double __align;
+} fpos_t;
+
+extern FILE *const stdin;
+extern FILE *const stdout;
+extern FILE *const stderr;
+
+
+
+
+
+FILE *fopen(const char *restrict, const char *restrict);
+FILE *freopen(const char *restrict, const char *restrict, FILE *restrict);
+int fclose(FILE *);
+
+int remove(const char *);
+int rename(const char *, const char *);
+
+int feof(FILE *);
+int ferror(FILE *);
+int fflush(FILE *);
+void clearerr(FILE *);
+
+int fseek(FILE *, long, int);
+long ftell(FILE *);
+void rewind(FILE *);
+
+int fgetpos(FILE *restrict, fpos_t *restrict);
+int fsetpos(FILE *, const fpos_t *);
+
+size_t fread(void *restrict, size_t, size_t, FILE *restrict);
+size_t fwrite(const void *restrict, size_t, size_t, FILE *restrict);
+
+int fgetc(FILE *);
+int getc(FILE *);
+int getchar(void);
+int ungetc(int, FILE *);
+
+int fputc(int, FILE *);
+int putc(int, FILE *);
+int putchar(int);
+
+char *fgets(char *restrict, int, FILE *restrict);
+
+char *gets(char *);
+
+
+int fputs(const char *restrict, FILE *restrict);
+int puts(const char *);
+
+#pragma printf_check(printf) const
+#pragma printf_check(vprintf) const
+#pragma printf_check(sprintf) const
+#pragma printf_check(snprintf) const
+#pragma printf_check(vsprintf) const
+#pragma printf_check(vsnprintf) const
+
+int printf(const char *restrict, ...);
+int fprintf(FILE *restrict, const char *restrict, ...);
+int sprintf(char *restrict, const char *restrict, ...);
+int snprintf(char *restrict, size_t, const char *restrict, ...);
+
+int vprintf(const char *restrict, __isoc_va_list);
+int vfprintf(FILE *restrict, const char *restrict, __isoc_va_list);
+int vsprintf(char *restrict, const char *restrict, __isoc_va_list);
+int vsnprintf(char *restrict, size_t, const char *restrict, __isoc_va_list);
+
+int scanf(const char *restrict, ...);
+int fscanf(FILE *restrict, const char *restrict, ...);
+int sscanf(const char *restrict, const char *restrict, ...);
+int vscanf(const char *restrict, __isoc_va_list);
+int vfscanf(FILE *restrict, const char *restrict, __isoc_va_list);
+int vsscanf(const char *restrict, const char *restrict, __isoc_va_list);
+
+void perror(const char *);
+
+int setvbuf(FILE *restrict, char *restrict, int, size_t);
+void setbuf(FILE *restrict, char *restrict);
+
+char *tmpnam(char *);
+FILE *tmpfile(void);
+
+
+
+
+FILE *fmemopen(void *restrict, size_t, const char *restrict);
+FILE *open_memstream(char **, size_t *);
+FILE *fdopen(int, const char *);
+FILE *popen(const char *, const char *);
+int pclose(FILE *);
+int fileno(FILE *);
+int fseeko(FILE *, off_t, int);
+off_t ftello(FILE *);
+int dprintf(int, const char *restrict, ...);
+int vdprintf(int, const char *restrict, __isoc_va_list);
+void flockfile(FILE *);
+int ftrylockfile(FILE *);
+void funlockfile(FILE *);
+int getc_unlocked(FILE *);
+int getchar_unlocked(void);
+int putc_unlocked(int, FILE *);
+int putchar_unlocked(int);
+ssize_t getdelim(char **restrict, size_t *restrict, int, FILE *restrict);
+ssize_t getline(char **restrict, size_t *restrict, FILE *restrict);
+int renameat(int, const char *, int, const char *);
+char *ctermid(char *);
+
+
+
+
+
+
+
+char *tempnam(const char *, const char *);
 # 3 "gy_521.c" 2
+
+# 1 "./gy_521.h" 1
+# 132 "./gy_521.h"
+uint8_t gy_address;
+# 149 "./gy_521.h"
+void gy_init(uint8_t gyAdd);
+# 158 "./gy_521.h"
+void gy_Read(int16_t* Ax, int16_t* Ay, int16_t* Az, int16_t* Gx, int16_t* Gy, int16_t* Gz, int16_t* Temp);
+# 4 "gy_521.c" 2
+
+# 1 "./I2C_MSSP1_driver.h" 1
+# 40 "./I2C_MSSP1_driver.h"
+void I2C_init(void);
+# 61 "./I2C_MSSP1_driver.h"
+void I2C_Start(void);
+# 70 "./I2C_MSSP1_driver.h"
+void I2C_Wait(void);
+# 91 "./I2C_MSSP1_driver.h"
+void I2C_Write(uint8_t data);
+
+
+
+
+
+
+void I2C_RepeatedStart();
+
+
+
+
+
+
+void I2C_Stop(void);
+# 139 "./I2C_MSSP1_driver.h"
+int8_t I2C_Read(int8_t ackbit);
+# 5 "gy_521.c" 2
+
+# 1 "./uart.h" 1
+# 26 "./uart.h"
+void uart_init(void);
+
+
+
+
+
+
+void uart_Write(unsigned char data);
+
+
+
+
+
+
+void uart_Write_String(char* buf);
+# 6 "gy_521.c" 2
+
+# 1 "./LCD.h" 1
+# 40 "./LCD.h"
+uint8_t lcd_address, RS;
+uint8_t BackLight_State = 0x08;
+# 50 "./LCD.h"
+void LCD_init(uint8_t lcd_addr);
+# 59 "./LCD.h"
+void IO_Expander(unsigned char data);
+# 68 "./LCD.h"
+void LCD_Write_4Bit(unsigned char Nibble);
+# 78 "./LCD.h"
+void LCD_CMD(unsigned char CMD);
+
+
+
+
+
+
+void LCD_write_char(char data);
+
+
+
+
+
+
+void LCD_write_string(char* str);
+
+
+
+
+
+
+
+void LCD_Set_Cursor(unsigned char ROW, unsigned char COL);
+
+
+
+
+
+
+void Backlight();
+
+
+
+
+
+
+void noBacklight();
+
+
+
+
+
+
+void LCD_SL();
+
+
+
+
+
+
+void LCD_SR();
+
+
+
+
+
+
+void LCD_Clear();
+# 7 "gy_521.c" 2
+
 
 
 void gy_init(uint8_t gyAdd){
@@ -20774,57 +21015,51 @@ void gy_init(uint8_t gyAdd){
 
     I2C_Start();
     I2C_Write(gy_address);
-    I2C_Write(0x1C);
+    I2C_Write(0x1B);
+    I2C_Write(0x00);
     I2C_Write(0x00);
     I2C_Stop();
 
 
     I2C_Start();
     I2C_Write(gy_address);
-    I2C_Write(0x1B);
-    I2C_Write(0x18);
-    I2C_Stop();
-
-
-    I2C_Start();
-    I2C_Write(gy_address);
     I2C_Write(0x38);
-    I2C_Write(0x01);
+    I2C_Write(0x00);
     I2C_Stop();
-
 }
 
 void gy_Read(int16_t* Ax, int16_t* Ay, int16_t* Az, int16_t* Gx, int16_t* Gy, int16_t* Gz, int16_t* Temp){
+    int8_t axtu, axtl, aytu, aytl ,aztu, aztl, gxtu, gxtl, gytu, gytl, gztu, gztl, ttu, ttl;
+    short axtf, aytf, aztf, gxtf, gytf, gztf, ttf;
+    char buffer[40];
 
     I2C_Start();
     I2C_Write(gy_address);
     I2C_Write(0x3B);
-    I2C_Stop();
+
 
 
     I2C_Start();
     I2C_Write(gy_address | 0x01);
-    *Ax = ((uint16_t)I2C_Read(0)<<8) | I2C_Read(0);
-    *Ay = ((uint16_t)I2C_Read(0)<<8) | I2C_Read(0);
-    *Az = ((uint16_t)I2C_Read(0)<<8) | I2C_Read(0);
-    *Temp = ((uint16_t)I2C_Read(0)<<8) | (int)I2C_Read(0);
-    *Gx = ((uint16_t)I2C_Read(0)<<8) | (int)I2C_Read(0);
-    *Gy = ((uint16_t)I2C_Read(0)<<8) | (int)I2C_Read(0);
-    *Gz = ((uint16_t)I2C_Read(0)<<8) | (int)I2C_Read(1);
+
+    axtu = I2C_Read(0);
+    axtl = I2C_Read(0);
+    axtf = (axtu << 8) | axtl;
+    aytu = (I2C_Read(0)<<8) | I2C_Read(0);
+    aztu = (I2C_Read(0)<<8) | I2C_Read(0);
+    ttu = (I2C_Read(0)<<8) | I2C_Read(0);
+    gxtu = (I2C_Read(0)<<8) | I2C_Read(0);
+    gytu = (I2C_Read(0)<<8) | I2C_Read(0);
+    gztu = (I2C_Read(0)<<8) | I2C_Read(1);
     I2C_Stop();
 
-    return;
-}
-
-
-void gy_TFF(int16_t* Ax, int16_t* Ay, int16_t* Az, int16_t* Gx, int16_t* Gy, int16_t* Gz, int16_t* Temp){
-    *Ax = (float)*Ax/16384.0;
-    *Ay = (float)*Ay/16384.0;
-    *Az = (float)*Az/16384.0;
-    *Gx = (float)*Gx/131.0;
-    *Gy = (float)*Gy/131.0;
-    *Gz = (float)*Gz/131.0;
-    *Temp = ((float)*Temp/340.00)+36.53;
-
+    axtf = (float)axtu/16384.0;
+    aytf = (float)aytu/16384.0;
+    aztf = (float)aztu/16384.0;
+    gxtf = (float)gxtu/131.0;
+    gytf = (float)gytu/131.0;
+    gztf = (float)gztu/131.0;
+    ttf = ((float)ttu/340.00)+36.53;
+# 116 "gy_521.c"
     return;
 }

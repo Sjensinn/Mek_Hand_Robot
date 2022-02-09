@@ -6,19 +6,20 @@
  */
 
 #include "system_init.h"
+#include "uart.h"
+#include "I2C_MSSP1_driver.h"
 
 void system_init(){
     clock_init();
     pin_init();
     uart_init();
     I2C_init();
-    //Timer1_Initialize();
     int_init();
 }
 
 
 void clock_init(){
-        // Set the CLOCK CONTROL module to the options selected in the user interface.
+    // Set the CLOCK CONTROL module to the options selected in the user interface.
     // NDIV 2; NOSC HFINTOSC; 
     OSCCON1 = 0x61;
     OSCCON2 = 0x70;

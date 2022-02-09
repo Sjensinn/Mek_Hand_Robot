@@ -19,11 +19,6 @@ void uart_init(void){
 
     // SPBRGH 1; 
     SP1BRGH = 0x1;
-    
-    ANSELCbits.ANSC3 = 0;   //Set to digital
-    ANSELCbits.ANSC4 = 0;   //Set to digital
-    TRISCbits.TRISC3 = 1;   //Set as input
-    TRISCbits.TRISC4 = 1;   //Set as input
 }
 
 void uart_Write(unsigned char data){
